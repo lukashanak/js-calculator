@@ -1,0 +1,134 @@
+:root {
+  --grey-color: #4d4d4d;
+  --light-grey-color: rgb(102, 102, 102);
+  --red-color: rgb(172, 57, 57);
+  --blue-color: rgb(0, 68, 102);
+}
+
+body {
+  background-color: #c2c2d6;
+}
+
+#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #decimal {
+  background-color: var(--grey-color)
+}
+
+#clear {
+  background-color: var(--red-color)
+}
+
+#divide, #multiply, #subtract, #add {
+  background-color: var(--light-grey-color)
+}
+
+#equals {
+  background-color: var(--blue-color)
+}
+
+#app {
+position: fixed;
+top: 0;
+left: 0;
+min-width: 100%;
+min-height: 100%;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+#calculator {
+  width: 335px;
+  border: 3px solid black;
+}
+
+#display {
+  text-align: right;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: black;
+  font-family: 'Wallpoet', cursive;
+}
+
+#input {
+  color: orange;
+  font-size: 20px;
+}
+
+#output {
+  color: white;
+  font-size: 25px;
+}
+
+#buttons {
+  font-family: 'Numans', sans-serif;
+  font-size: 0px;
+  background-color: grey;
+  height: 260px;
+}
+
+#buttons > div {
+  border: 1px solic black;
+  color: white;
+}
+
+.shorter-div, .longer-div {
+  border: 1px solic black;
+}
+
+.shorter-div {
+  width: 252px;
+}
+
+.longer-div {
+  width: 83.75px;
+  position: relative;
+  left: 251px;
+  bottom: 104px;
+
+
+}
+
+.part {
+  border: 1px solid black;
+  display: inline-block;
+  text-align: center;
+  font-size: 25px;
+}
+
+.part:hover {
+  color: black !important;
+  border-color: white;
+}
+
+.small-btn {
+  width: 81.75px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.ac-btn {
+  width: 165.5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.is-equal-btn {
+  width: 82.75px;
+  height: 73px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  position: relative;
+  top: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" />
+    <title>Calculator app</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Numans&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <div id="calculator">
+      <div id="display">
+        <div id="input">
+            0
+        </div>
+        <div id="output">
+            0
+        </div>
+      </div>
+      <div id="buttons">
+          <div class="part ac-btn" id="clear">AC</div>
+          <div class="part small-btn" id="divide" >/</div>
+          <div class="part small-btn" id="multiply" >x</div>
+
+          <div class="part small-btn" id="seven" >7</div>
+          <div class="part small-btn" id="eight" >8</div>
+          <div class="part small-btn" id="nine" >9</div>
+          <div class="part small-btn" id="subtract" >-</div>
+
+          <div class="part small-btn" id="four" >4</div>
+          <div class="part small-btn" id="five" >5</div>
+          <div class="part small-btn" id="six" >6</div>
+          <div class="part small-btn" id="add" >+</div>
+
+      <div class="shorter-div">
+          <div class="part small-btn" id="one">1</div>
+          <div class="part small-btn" id="two">2</div>
+          <div class="part small-btn" id="three">3</div>
+      </div>
+
+      <div class="shorter-div">
+          <div class="part ac-btn go-top" id="zero">0</div>
+          <div class="part small-btn go-top" id="decimal">.</div>
+      </div>
+
+        <div class="longer-div">
+          <div class="part is-equal-btn" id="equals">=</div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./app.js"></script>
+   <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"> </script>
+
+  </body>
+</html>
