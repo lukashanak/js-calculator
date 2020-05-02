@@ -57,12 +57,12 @@ user-select: none;
   font-family: 'Wallpoet', cursive;
 }
 
-#input {
+#previous-input {
   color: orange;
   font-size: 20px;
 }
 
-#output {
+#current-input {
   color: white;
   font-size: 25px;
 }
