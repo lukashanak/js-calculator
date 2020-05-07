@@ -1,18 +1,119 @@
+
+
+class Calculator {
+    constructor (displayPrevious, displayCurrent) {
+        this.displayPrevious = displayPrevious
+        this.displayCurrent = displayCurrent
+        this.lastType = false // because calculator is in the default state
+        this.isDefault = true;
+    }
+
+    clear() {
+        this.displayPrevious.innerText = "0";
+        this.displayCurrent.innerText = "0";
+        this.lastType = false;
+        this.isDefault = true;
+    }
+
+    addNumber(number) {
+        if (this.isDefault) {
+        this.displayCurrent.innerText = "";
+        }
+        if (this.lastType == 'operator') {
+            this.displayPrevious.innerText += this.displayCurrent.innerText;
+            this.displayCurrent.innerText = "";
+        }
+        this.displayCurrent.innerText+=number;
+        this.lastType = "number";
+        this.isDefault = false;
+    }
+
+    allowedToUseDecimal() {
+        let str = this.displayCurrent.innerText;
+        if (str.length == 0) {
+            return false;
+    }
+        else if(str.includes(".") === true) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    addDecimal(){
+        if (this.allowedToUseDecimal() === true) {
+        this.displayCurrent.innerText+=".";
+        this.lastType = "decimal";
+        }
+    }
+
+    addOperator(operator) {
+        if (this.isDefault === true) { return 0}
+        if (this.lastType == 'number') {
+            if (this.displayPrevious.innerText.length==1 && this.displayPrevious.innerText=="0") { this.displayPrevious.innerText = ""}
+            this.displayPrevious.innerText += this.displayCurrent.innerText;
+            this.displayCurrent.innerText = "";
+        }
+        if (this.lastType == "operator") {
+            this.displayCurrent.innerText="";
+        }
+        this.displayCurrent.innerText+=operator;
+        this.lastType = "operator";
+    }
+
+    getResult() {
+        console.log("result calculated");
+    }
+} 
+
+
+
+// displays
+const displayPrevious = document.getElementById("display-previous");
+const displayCurrent = document.getElementById("display-current");
+
+// clear button
+const clearBtn = document.getElementById("clear");
+
 // operators
+const allOperatorButtons = document.getElementsByClassName("operator");
+const addBtn = document.getElementById("add");
 const divideBtn = document.getElementById("divide");
 const multiplyBtn = document.getElementById("multiply");
 const subtractBtn = document.getElementById("subtract");
-const addBtn = document.getElementById("add");
-const equalsBtn = document.getElementById("add");
+const equalsBtn = document.getElementById("equals");
 
 // numbers 
-const oneBtn = document.getElementById("one");
-const twoBtn = document.getElementById("two");
-const threeBtn = document.getElementById("three");
-const fourBtn = document.getElementById("four");
-const fiveBtn = document.getElementById("five");
-const sixBtn = document.getElementById("six");
-const sevenBtn = document.getElementById("seven");
-const eightBtn = document.getElementById("eight");
-const nineBtn = document.getElementById("nine");
+const allNumberButtons = document.getElementsByClassName("number");
 
+// decimal
+const decimalBtn = document.getElementById("decimal");
+
+const calculator = new Calculator(displayPrevious, displayCurrent);
+
+clearBtn.addEventListener('click', () =>{
+    calculator.clear();
+})
+
+decimalBtn.addEventListener('click', () =>{
+    calculator.addDecimal();
+})
+
+equalsBtn.addEventListener('click', () =>{
+    calculator.getResult();
+})
+
+for (let i=0; i < allNumberButtons.length; i++) {
+    allNumberButtons[i].addEventListener('click', () =>{
+        calculator.addNumber(allNumberButtons[i].innerText)
+    }
+    )
+}
+
+for (let i=0; i < allOperatorButtons.length; i++) {
+    allOperatorButtons[i].addEventListener('click', () =>{
+        calculator.addOperator(allOperatorButtons[i].innerText)
+    }
+    )
+}
