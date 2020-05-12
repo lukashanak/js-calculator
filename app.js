@@ -16,9 +16,9 @@ class Calculator {
     }
 
     addNumber(number) {
-        if (this.isDefault) {
-        this.displayCurrent.innerText = "";
-        }
+        if (this.displayCurrent.innerText == "0") {
+            this.displayCurrent.innerText = "";
+            }
         if (this.lastType == 'operator') {
             this.displayPrevious.innerText += this.displayCurrent.innerText;
             this.displayCurrent.innerText = "";
@@ -34,6 +34,9 @@ class Calculator {
             return false;
     }
         else if(str.includes(".") === true) {
+            return false;
+        }
+        else if(this.lastType == "operator") {
             return false;
         }
         else {
@@ -64,6 +67,7 @@ class Calculator {
 
     getResult() {
         console.log("result calculated");
+        
     }
 } 
 

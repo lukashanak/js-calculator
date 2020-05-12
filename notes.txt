@@ -1,0 +1,11 @@
+what is needed to be done: 
+
+- it should use immediate execution logic, like in the windows calculator
+
+working:
+- calculator should not allow to start with the decimal
+- calculator should not allow to use two decimals in one number
+- i should be able to see numbers in the display when i press them
+- i should be able to see the operators when i press them
+- calculator should accept always the last operator that user pressed only
+- if the first number is the zero, second one can't be
