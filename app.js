@@ -75,7 +75,7 @@ class Calculator {
         var lastStep = "";
     
         for (var i=0; i <= str.length; i++) {
-            if (this.isNum(str[i])) {
+            if (this.isNum(str[i]) || str[i] == ".") {
                 lastStep += str[i];
             }
             else if(i == str.length) {
