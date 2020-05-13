@@ -4,14 +4,14 @@ class Calculator {
     constructor (displayPrevious, displayCurrent) {
         this.displayPrevious = displayPrevious
         this.displayCurrent = displayCurrent
-        this.lastType = false // because calculator is in the default state
+        this.lastType = undefined;
         this.isDefault = true;
     }
 
     clear() {
         this.displayPrevious.innerText = "0";
         this.displayCurrent.innerText = "0";
-        this.lastType = false;
+        this.lastType = undefined;
         this.isDefault = true;
     }
 
@@ -65,10 +65,61 @@ class Calculator {
         this.lastType = "operator";
     }
 
-    getResult() {
-        console.log("result calculated");
-        
+    isNum(value) {
+        return value >= 0 && value < 10;
     }
+
+    editStr() {
+        var str = displayPrevious.innerText;
+        var finalArr = [];
+        var lastStep = "";
+    
+        for (var i=0; i <= str.length; i++) {
+            if (this.isNum(str[i])) {
+                lastStep += str[i];
+            }
+            else if(i == str.length) {
+                finalArr.push(lastStep);
+            }
+            else {
+                finalArr.push(lastStep);
+                finalArr.push(str[i]);
+                lastStep = "";
+            }
+        }
+        if (finalArr[finalArr.length-1] == '""') {
+            finalArr.pop()
+        }
+        return finalArr;
+    }
+
+    getResult() {
+        var inputArr = this.editStr();
+        var actualResult = parseFloat(inputArr[0]);
+        var subArray;
+        for (var i=1; i < inputArr.length; i++) {
+          subArray = inputArr[i];
+          if (isNaN(subArray)) {
+              if (subArray == "+") {
+              actualResult += parseFloat(inputArr[i+1]);
+              }
+              else if(subArray == "x") {
+                  actualResult *= parseFloat(inputArr[i+1]);
+              }
+              else if(subArray == "-") {
+                  actualResult -= parseFloat(inputArr[i+1]);
+              }
+              else if(subArray == "/") {
+                  actualResult /= parseFloat(inputArr[i+1]);
+              }
+          }
+        }
+        this.displayPrevious.innerText = actualResult;
+        this.displayCurrent.innerText = "";
+        this.lastType = undefined;
+        
+      }
+
 } 
 
 
@@ -105,8 +156,14 @@ decimalBtn.addEventListener('click', () =>{
 })
 
 equalsBtn.addEventListener('click', () =>{
+   var lastCharInDisplayPrevious = calculator.displayCurrent.innerText[calculator.displayCurrent.innerText.length-1];
+    if (calculator.isNum(lastCharInDisplayPrevious) === true) {
+        calculator.displayPrevious.innerText += calculator.displayCurrent.innerText;
+       console.log("it works");
+    }
     calculator.getResult();
 })
+
 
 for (let i=0; i < allNumberButtons.length; i++) {
     allNumberButtons[i].addEventListener('click', () =>{
