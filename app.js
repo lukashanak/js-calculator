@@ -117,7 +117,6 @@ class Calculator {
         this.displayPrevious.innerText = actualResult;
         this.displayCurrent.innerText = "";
         this.lastType = undefined;
-        
       }
 
 } 
@@ -159,7 +158,6 @@ equalsBtn.addEventListener('click', () =>{
    var lastCharInDisplayPrevious = calculator.displayCurrent.innerText[calculator.displayCurrent.innerText.length-1];
     if (calculator.isNum(lastCharInDisplayPrevious) === true) {
         calculator.displayPrevious.innerText += calculator.displayCurrent.innerText;
-       console.log("it works");
     }
     calculator.getResult();
 })
