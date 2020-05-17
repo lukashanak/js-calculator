@@ -2,8 +2,8 @@
 
 class Calculator {
     constructor (displayPrevious, displayCurrent) {
-        this.displayPrevious = displayPrevious
-        this.displayCurrent = displayCurrent
+        this.displayPrevious = displayPrevious;
+        this.displayCurrent = displayCurrent;
         this.lastType = undefined;
         this.isDefault = true;
     }
@@ -146,6 +146,7 @@ const decimalBtn = document.getElementById("decimal");
 
 const calculator = new Calculator(displayPrevious, displayCurrent);
 
+//event listeners
 clearBtn.addEventListener('click', () =>{
     calculator.clear();
 })
@@ -162,7 +163,7 @@ equalsBtn.addEventListener('click', () =>{
     calculator.getResult();
 })
 
-
+// event listeners for number buttons
 for (let i=0; i < allNumberButtons.length; i++) {
     allNumberButtons[i].addEventListener('click', () =>{
         calculator.addNumber(allNumberButtons[i].innerText)

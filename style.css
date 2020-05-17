@@ -48,6 +48,12 @@ user-select: none;
   border: 3px solid black;
 }
 
+@media screen and (max-width: 767px) {
+  #app {
+    
+  }
+}
+
 #display {
   text-align: right;
   display: block;
